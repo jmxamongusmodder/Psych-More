@@ -30,6 +30,7 @@ class ClientPrefs {
 	public static var controllerMode:Bool = false;
 	public static var hitsoundVolume:Float = 0;
 	public static var pauseMusic:String = 'Tea Time';
+	public static var awfulAssets:Bool = false; // cool thing thats not very important but i did it anyway
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -124,6 +125,7 @@ class ClientPrefs {
 		FlxG.save.data.controllerMode = controllerMode;
 		FlxG.save.data.hitsoundVolume = hitsoundVolume;
 		FlxG.save.data.pauseMusic = pauseMusic;
+		FlxG.save.data.awfulAssets = awfulAssets;
 	
 		FlxG.save.flush();
 
@@ -229,6 +231,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.pauseMusic != null) {
 			pauseMusic = FlxG.save.data.pauseMusic;
+		}
+		if(FlxG.save.data.awfulAssets != null) {
+			awfulAssets = FlxG.save.data.awfulAssets;
 		}
 		if(FlxG.save.data.gameplaySettings != null)
 		{

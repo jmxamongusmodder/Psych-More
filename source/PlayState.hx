@@ -160,7 +160,8 @@ class PlayState extends MusicBeatState
 	public var goods:Int = 0;
 	public var bads:Int = 0;
 	public var shits:Int = 0;
-	
+
+	public var antiali:Bool = ClientPrefs.globalAntialiasing;
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
 	public var startingSong:Bool = false;
@@ -445,10 +446,11 @@ class PlayState extends MusicBeatState
 					var stageCurtains:BGSprite = new BGSprite('stagecurtains', -500, -300, 1.3, 1.3);
 					stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 					stageCurtains.updateHitbox();
+				        stageCurtains.antialiasing = antiali;
 					add(stageCurtains);
 				}
 
-			case 'spooky': //Week 2
+			case 'spooky': // Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
 				} else {
@@ -465,35 +467,37 @@ class PlayState extends MusicBeatState
 				CoolUtil.precacheSound('thunder_1');
 				CoolUtil.precacheSound('thunder_2');
 
-			case 'philly': //Week 3
+			case 'philly': // Week 3
 				if(!ClientPrefs.lowQuality) {
 					var bg:BGSprite = new BGSprite('philly/sky', -100, 0, 0.1, 0.1);
+				        bg.antialiasing = antiali;
 					add(bg);
 				}
 				
 				var city:BGSprite = new BGSprite('philly/city', -10, 0, 0.3, 0.3);
 				city.setGraphicSize(Std.int(city.width * 0.85));
 				city.updateHitbox();
+				city.antialiasing = antiali;
 				add(city);
 
 				phillyCityLights = new FlxTypedGroup<BGSprite>();
 				add(phillyCityLights);
 
-				for (i in 0...5)
-				{
-					var light:BGSprite = new BGSprite('philly/win' + i, city.x, city.y, 0.3, 0.3);
-					light.visible = false;
-					light.setGraphicSize(Std.int(light.width * 0.85));
-					light.updateHitbox();
-					phillyCityLights.add(light);
-				}
+                                public var lightNumberPhillyThing:Int = FlxG.random.int(0, 5);
+				var light:BGSprite = new BGSprite('philly/win' + lightNumberPhillyThing, city.x, city.y, 0.3, 0.3); // idk what to trust anymore.. my own code or shadows..
+				light.visible = false;
+				light.setGraphicSize(Std.int(light.width * 0.85));
+				light.updateHitbox();
+				phillyCityLights.add(light);
 
 				if(!ClientPrefs.lowQuality) {
 					var streetBehind:BGSprite = new BGSprite('philly/behindTrain', -40, 50);
+				        streetBehind.antialiasing = antiali;
 					add(streetBehind);
 				}
 
 				phillyTrain = new BGSprite('philly/train', 2000, 360);
+				phillyTrain.antialiasing = antiali;
 				add(phillyTrain);
 
 				trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
@@ -501,17 +505,21 @@ class PlayState extends MusicBeatState
 				FlxG.sound.list.add(trainSound);
 
 				var street:BGSprite = new BGSprite('philly/street', -40, 50);
+				street.antialiasing = antiali;
 				add(street);
 
 			case 'limo': //Week 4
 				var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
+				skyBG.antialiasing = antiali;
 				add(skyBG);
 
 				if(!ClientPrefs.lowQuality) {
 					limoMetalPole = new BGSprite('gore/metalPole', -500, 220, 0.4, 0.4);
+				        limoMetalPole.antialiasing = antiali;
 					add(limoMetalPole);
 
 					bgLimo = new BGSprite('limo/bgLimo', -150, 480, 0.4, 0.4, ['background limo pink'], true);
+				        bgLimo.antialiasing = antiali;
 					add(bgLimo);
 
 					limoCorpse = new BGSprite('gore/noooooo', -500, limoMetalPole.y - 130, 0.4, 0.4, ['Henchmen on rail'], true);
@@ -527,6 +535,7 @@ class PlayState extends MusicBeatState
 					{
 						var dancer:BackgroundDancer = new BackgroundDancer((370 * i) + 130, bgLimo.y - 400);
 						dancer.scrollFactor.set(0.4, 0.4);
+				                dancer.antialiasing = antiali;
 						grpLimoDancers.add(dancer);
 					}
 
@@ -556,6 +565,7 @@ class PlayState extends MusicBeatState
 				var bg:BGSprite = new BGSprite('christmas/bgWalls', -1000, -500, 0.2, 0.2);
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
 				bg.updateHitbox();
+				bg.antialiasing = antiali;
 				add(bg);
 
 				if(!ClientPrefs.lowQuality) {
@@ -571,6 +581,7 @@ class PlayState extends MusicBeatState
 				}
 
 				var tree:BGSprite = new BGSprite('christmas/christmasTree', 370, -250, 0.40, 0.40);
+				tree.antialiasing = antiali;
 				add(tree);
 
 				bottomBoppers = new BGSprite('christmas/bottomBop', -300, 140, 0.9, 0.9, ['Bottom Level Boppers Idle']);
@@ -580,9 +591,11 @@ class PlayState extends MusicBeatState
 				add(bottomBoppers);
 
 				var fgSnow:BGSprite = new BGSprite('christmas/fgSnow', -600, 700);
+				fgSnow.antialiasing = antiali;
 				add(fgSnow);
 
 				santa = new BGSprite('christmas/santa', -840, 150, 1, 1, ['santa idle in fear']);
+				santa.antialiasing = antiali;
 				add(santa);
 				CoolUtil.precacheSound('Lights_Shut_off');
 
@@ -593,9 +606,11 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 				var evilTree:BGSprite = new BGSprite('christmas/evilTree', 300, -300, 0.2, 0.2);
+				evilTree.antialiasing = antiali;
 				add(evilTree);
 
 				var evilSnow:BGSprite = new BGSprite('christmas/evilSnow', -200, 700);
+				evilSnow.antialiasing = antiali;
 				add(evilSnow);
 
 			case 'school': //Week 6 - Senpai, Roses
@@ -3900,7 +3915,7 @@ class PlayState extends MusicBeatState
 	var carTimer:FlxTimer;
 	function fastCarDrive()
 	{
-		//trace('Car drive');
+		trace('First thing that came to mind: CARS');
 		FlxG.sound.play(Paths.soundRandom('carPass', 0, 1), 0.7);
 
 		fastCar.velocity.x = (FlxG.random.int(170, 220) / FlxG.elapsed) * 3;
@@ -3968,8 +3983,6 @@ class PlayState extends MusicBeatState
 		}
 		phillyTrain.x = FlxG.width + 200;
 		trainMoving = false;
-		// trainSound.stop();
-		// trainSound.time = 0;
 		trainCars = 8;
 		trainFinishing = false;
 		startedMoving = false;
@@ -3981,7 +3994,7 @@ class PlayState extends MusicBeatState
 		if(!ClientPrefs.lowQuality) halloweenBG.animation.play('halloweem bg lightning strike');
 
 		lightningStrikeBeat = curBeat;
-		lightningOffset = FlxG.random.int(8, 24);
+		lightningOffset = FlxG.random.int(6, 26);
 
 		if(boyfriend.animOffsets.exists('scared')) {
 			boyfriend.playAnim('scared', true);
@@ -4221,7 +4234,7 @@ class PlayState extends MusicBeatState
 		}
 		lastBeatHit = curBeat;
 
-		setOnLuas('curBeat', curBeat); //DAWGG?????
+		setOnLuas('curBeat', curBeat);
 		callOnLuas('onBeatHit', []);
 	}
 
@@ -4401,6 +4414,6 @@ class PlayState extends MusicBeatState
 	}
 	#end
 
-	var curLight:Int = 0;
-	var curLightEvent:Int = 0;
+/*	var curLight:Int = 0;
+	var curLightEvent:Int = 0; */
 }
