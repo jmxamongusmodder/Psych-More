@@ -131,7 +131,7 @@ class PlayState extends MusicBeatState
 
 	private var strumLine:FlxSprite;
 
-	//Handles the new epic mega cul cam code that i've done
+        public var lightNumberPhillyThing:Int = FlxG.random.int(0, 5); // oh yeah the cul cam things are down here i forgor about that xD
 	private var camFollow:FlxPoint;
 	private var camFollowPos:FlxObject;
 	private static var prevCamFollow:FlxPoint;
@@ -483,7 +483,6 @@ class PlayState extends MusicBeatState
 				phillyCityLights = new FlxTypedGroup<BGSprite>();
 				add(phillyCityLights);
 
-                                public var lightNumberPhillyThing:Int = FlxG.random.int(0, 5);
 				var light:BGSprite = new BGSprite('philly/win' + lightNumberPhillyThing, city.x, city.y, 0.3, 0.3); // idk what to trust anymore.. my own code or shadows..
 				light.visible = false;
 				light.setGraphicSize(Std.int(light.width * 0.85));
