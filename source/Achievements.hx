@@ -5,6 +5,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
+import ClientPrefs;
 import flixel.text.FlxText;
 
 using StringTools;
@@ -80,9 +81,7 @@ class Achievements {
 		// Edit: Oh yeah, just thought that this also makes me able to change the achievements orders easier later if i want to.
 		// So yeah, if you didn't thought about that i'm smarter than you, i think
 
-		// buffoon
-
-		// EDIT 2: Uhh this is weird, this message was written for MInd Games, so it doesn't apply logically for Psych Engine LOL
+		// ha ha
 	}
 }
 
@@ -103,11 +102,9 @@ class AttachedAchievement extends FlxSprite {
 
 	public function reloadAchievementImage() {
 		if(Achievements.isAchievementUnlocked(tag)) {
-			loadGraphic(Paths.image('achievementgrid'), true, 150, 150);
-			animation.add('icon', [Achievements.getAchievementIndex(tag)], 0, false, false);
-			animation.play('icon');
+			loadGraphic(Paths.image('achievements/' + tag));
 		} else {
-			loadGraphic(Paths.image('lockedachievement'));
+			loadGraphic(Paths.image('achievements/lockedachievement'));
 		}
 		scale.set(0.7, 0.7);
 		updateHitbox();
@@ -130,35 +127,40 @@ class AchievementObject extends FlxSpriteGroup {
 		ClientPrefs.saveSettings();
 
 		var id:Int = Achievements.getAchievementIndex(name);
+//              var grahm = id;
 		var achievementBG:FlxSprite = new FlxSprite(60, 50).makeGraphic(420, 120, FlxColor.BLACK);
 		achievementBG.scrollFactor.set();
 
-		var achievementIcon:FlxSprite = new FlxSprite(achievementBG.x + 10, achievementBG.y + 10).loadGraphic(Paths.image('achievementgrid'), true, 150, 150);
-		achievementIcon.animation.add('icon', [id], 0, false, false);
-		achievementIcon.animation.play('icon');
+		var achievementIcon:FlxSprite = new FlxSprite(achievementBG.x + 10, achievementBG.y + 10).loadGraphic(Paths.image('achievements/' + name)); // maybe instead of name use grahm?
 		achievementIcon.scrollFactor.set();
 		achievementIcon.setGraphicSize(Std.int(achievementIcon.width * (2 / 3)));
-		achievementIcon.updateHitbox();
+                achievementIcon.updateHitbox();
 		achievementIcon.antialiasing = ClientPrefs.globalAntialiasing;
+                achievementIcon.alpha = ClientPrefs.healthBarAlpha;
 
 		var achievementName:FlxText = new FlxText(achievementIcon.x + achievementIcon.width + 20, achievementIcon.y + 16, 280, Achievements.achievementsStuff[id][0], 16);
 		achievementName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
 		achievementName.scrollFactor.set();
+                achievementName.alpha = ClientPrefs.healthBarAlpha;
 
 		var achievementText:FlxText = new FlxText(achievementName.x, achievementName.y + 32, 280, Achievements.achievementsStuff[id][1], 16);
 		achievementText.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT);
-		achievementText.scrollFactor.set();
+		achievementText.scrollFactor.set(); 
+                achievementText.alpha = ClientPrefs.healthBarAlpha;
 
 		add(achievementBG);
 		add(achievementName);
 		add(achievementText);
 		add(achievementIcon);
+                trace('Icon Alpha equals ' + achievementIcon.alpha);
+                trace('Name Alpha equals ' + achievementName.alpha);
+                trace('Text Alpha equals ' + achievementText.alpha);
 
 		var cam:Array<FlxCamera> = FlxCamera.defaultCameras;
 		if(camera != null) {
 			cam = [camera];
 		}
-		alpha = 0;
+		alpha = ClientPrefs.healthBarAlpha; // waht
 		achievementBG.cameras = cam;
 		achievementName.cameras = cam;
 		achievementText.cameras = cam;
