@@ -10,10 +10,6 @@ import flixel.util.FlxTimer;
 import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
 
-/**
- * ...
- * @author 
- */
 class Prompt extends MusicBeatSubstate
 {
 	var selected = 0;
@@ -62,8 +58,8 @@ class Prompt extends MusicBeatSubstate
 		panelbg = new FlxSprite(0, 0);
 		makeSelectorGraphic(panel,300,150,0xff999999);
 		makeSelectorGraphic(panelbg,302,165,0xff000000);
-		//panel.makeGraphic(300, 150, 0xff999999);
-		//panel.loadGraphic(Paths.image('ui/promptbg'));
+		panel.makeGraphic(300, 150, 0xff999999);
+		panel.loadGraphic(Paths.image('ui/promptbg')); // wonder if i needed this?
 		/*
 		buttons.frames = Paths.getSparrowAtlas('ui/prompt_buttons');
 		buttons.animation.addByIndices('but0', 'buttons', [0], '', 0);

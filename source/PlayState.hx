@@ -248,7 +248,6 @@ class PlayState extends MusicBeatState
 	public var girlfriendCameraOffset:Array<Float> = null;
 
 	#if desktop
-	// Discord RPC variables
 	var storyDifficultyText:String = "";
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
@@ -350,9 +349,12 @@ class PlayState extends MusicBeatState
 
 		GameOverSubstate.resetVariables();
 		var songName:String = Paths.formatToSongPath(SONG.song);
+/*              if (songName == 'roses') { // cool swappy (nvm it crashes week 6 also WHY CHART CRASHES?)
+                     bgGirls.swapDanceType();
+                } */
 
 		curStage = PlayState.SONG.stage;
-		//trace('stage is: ' + curStage);
+		trace('stage is: ' + curStage); // why was this unused?? (i see now it always uh does NULL)
 		if(PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
 			switch (songName)
 			{
@@ -731,7 +733,7 @@ class PlayState extends MusicBeatState
 		add(luaDebugGroup);
 		#end
 
-		if(curStage == 'philly') {
+/*		if(curStage == 'philly') {
 			phillyCityLightsEvent = new FlxTypedGroup<BGSprite>();
 			for (i in 0...5)
 			{
@@ -741,7 +743,7 @@ class PlayState extends MusicBeatState
 				light.updateHitbox();
 				phillyCityLightsEvent.add(light);
 			}
-		}
+		} */
 
 
 		// "GLOBAL" SCRIPTS
@@ -790,23 +792,23 @@ class PlayState extends MusicBeatState
 			luaArray.push(new FunkinLua(luaFile));
 		#end
 
-//		if(!modchartSprites.exists('blammedLightsBlack')) { //Creates blammed light black fade in case you didn't make your own
-//			blammedLightsBlack = new ModchartSprite(FlxG.width * -0.5, FlxG.height * -0.5);
-//			blammedLightsBlack.makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
-//			var position:Int = members.indexOf(gfGroup);
-//			if(members.indexOf(boyfriendGroup) < position) {
-//				position = members.indexOf(boyfriendGroup);
-//			} else if(members.indexOf(dadGroup) < position) {
-//				position = members.indexOf(dadGroup);
-//			}
-//			insert(position, blammedLightsBlack);
+		if(!modchartSprites.exists('blammedLightsBlack')) { //Creates blammed light black fade in case you didn't make your own
+			blammedLightsBlack = new ModchartSprite(FlxG.width * -0.5, FlxG.height * -0.5);
+			blammedLightsBlack.makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
+			var position:Int = members.indexOf(gfGroup);
+			if(members.indexOf(boyfriendGroup) < position) {
+				position = members.indexOf(boyfriendGroup);
+			} else if(members.indexOf(dadGroup) < position) {
+				position = members.indexOf(dadGroup);
+			}
+			insert(position, blammedLightsBlack);
 
-//			blammedLightsBlack.wasAdded = true;
-//			modchartSprites.set('blammedLightsBlack', blammedLightsBlack);
-//		}
-/*		if(curStage == 'philly') insert(members.indexOf(blammedLightsBlack) + 1, phillyCityLightsEvent);
+			blammedLightsBlack.wasAdded = true;
+			modchartSprites.set('blammedLightsBlack', blammedLightsBlack);
+		}
+		if(curStage == 'philly') insert(members.indexOf(blammedLightsBlack) + 1, phillyCityLightsEvent);
 		blammedLightsBlack = modchartSprites.get('blammedLightsBlack');
-		blammedLightsBlack.alpha = 0.0; */
+		blammedLightsBlack.alpha = 0.0;
 
 		var gfVersion:String = SONG.gfVersion;
 		if(gfVersion == null || gfVersion.length < 1) {
@@ -2749,8 +2751,83 @@ class PlayState extends MusicBeatState
 				if(Math.isNaN(value) || value < 1) value = 1;
 				gfSpeed = value;
 
+			case 'Blammed Lights':
+				var lightId:Int = Std.parseInt(value1);
+				if(Math.isNaN(lightId)) lightId = 0;
+
+				var chars:Array<Character> = [boyfriend, gf, dad]; // do yall like gf?
+				if(lightId > 0 && curLightEvent != lightId) {
+					if(lightId > 5) lightId = FlxG.random.int(1, 5, [curLightEvent]);
+
+					var color:Int = 0xffffffff;
+					switch(lightId) {
+						case 0: //Off
+							color = 0xff31a2fd;
+                                                        alpha = 0; // does 1 mean off or on?
+						case 1: //Blue
+							color = 0xff31a2fd;
+						case 2: //Green
+							color = 0xff31fd8c;
+						case 3: //Pink
+							color = 0xfff794f7;
+						case 4: //Red
+							color = 0xfff96d63;
+						case 5: //Orange
+							color = 0xfffba633;
+					}
+					curLightEvent = lightId;
+
+/*					if(blammedLightsBlack.alpha == 0) {
+						if(blammedLightsBlackTween != null) {
+							blammedLightsBlackTween.cancel();
+						}
+						blammedLightsBlackTween = FlxTween.tween(blammedLightsBlack, {alpha: 1}, 1, {ease: FlxEase.quadInOut,
+							onComplete: function(twn:FlxTween) {
+								blammedLightsBlackTween = null;
+							}
+						}); */
+
+						for (char in chars) {
+							if(char.colorTween != null) {
+								char.colorTween.cancel();
+							}
+							char.colorTween = FlxTween.color(char, 1, FlxColor.WHITE, color, {onComplete: function(twn:FlxTween) {
+								char.colorTween = null;
+							}, ease: FlxEase.quadInOut});
+						}
+					} else {
+						if(blammedLightsBlackTween != null) {
+							blammedLightsBlackTween.cancel();
+						}
+						blammedLightsBlackTween = null;
+						blammedLightsBlack.alpha = 1;
+
+						for (char in chars) {
+							if(char.colorTween != null) {
+								char.colorTween.cancel();
+							}
+							char.colorTween = null;
+						}
+						dad.color = color;
+						boyfriend.color = color;
+						if (gf != null)
+							gf.color = color;
+					}
+					
+					if(curStage == 'philly') {
+						if(phillyCityLightsEvent != null) {
+							phillyCityLightsEvent.forEach(function(spr:BGSprite) {
+								spr.visible = false;
+							});
+							phillyCityLightsEvent.members[lightId - 1].visible = true;
+							phillyCityLightsEvent.members[lightId - 1].alpha = 1;
+						}
+					}
+				}
+			}
 			case 'Kill Henchmen':
-				killHenchmen();
+				killHenchmen(); // cool
+                trace('cool');
 
 			case 'Add Camera Zoom':
 				if(ClientPrefs.camZooms && FlxG.camera.zoom < 1.35) {
@@ -2770,7 +2847,7 @@ class PlayState extends MusicBeatState
 				}
 
 			case 'Play Animation':
-				//trace('Anim to play: ' + value1);
+				trace('Anim to play: ' + value1);
 				var char:Character = dad;
 				switch(value2.toLowerCase().trim()) {
 					case 'bf' | 'boyfriend':
@@ -4214,10 +4291,10 @@ class PlayState extends MusicBeatState
 						light.visible = false;
 					});
 
-//					curLight = FlxG.random.int(0, phillyCityLights.length - 1, [curLight]);
+					curLight = FlxG.random.int(0, phillyCityLights.length - 1, [curLight]);
 
-/*					phillyCityLights.members[curLight].visible = true;
-					phillyCityLights.members[curLight].alpha = 1; */
+					phillyCityLights.members[curLight].visible = true;
+					phillyCityLights.members[curLight].alpha = 1;
 				}
 
 				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8)
@@ -4413,6 +4490,6 @@ class PlayState extends MusicBeatState
 	}
 	#end
 
-/*	var curLight:Int = 0;
-	var curLightEvent:Int = 0; */
+	var curLight:Int = 0;
+	var curLightEvent:Int = 0;
 }

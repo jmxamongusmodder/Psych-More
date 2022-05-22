@@ -1,0 +1,4 @@
+RIP:HUD
+removes hud lol
+
+value1: 1 turns HUD off (smoothly); 2 turns HUD back on (if off)
