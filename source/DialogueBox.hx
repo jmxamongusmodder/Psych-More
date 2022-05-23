@@ -125,13 +125,17 @@ class DialogueBox extends FlxSpriteGroup
 		handSelect = new FlxSprite(1042, 590).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
 		handSelect.setGraphicSize(Std.int(handSelect.width * PlayState.daPixelZoom * 0.9));
 		handSelect.updateHitbox();
-		handSelect.visible = false;
+		handSelect.visible = true; // waht
 		add(handSelect);
 
 
 		if (!talkingRight)
 		{
-			// box.flipX = true;
+			box.flipX = true;
+		}
+                else
+		{
+			box.flipX = false;
 		}
 
 		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
