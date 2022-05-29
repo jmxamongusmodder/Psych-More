@@ -1,4 +1,4 @@
-package;
+package animateatlas;
 
 import animateatlas.JSONData.AtlasData;
 import openfl.display.BitmapData;
@@ -54,7 +54,7 @@ class Main extends Sprite {
 		spriteSymbols = [];
 
 		addEventListener(Event.ENTER_FRAME, update);
-		// addEventListener(MouseEvent.CLICK, addSpriteGirl);
+		addEventListener(MouseEvent.CLICK, addSpriteGirl); // why this go unused lmao wait NVM
 		addEventListener(MouseEvent.CLICK, addTileGirl);
 	}
 
@@ -63,38 +63,38 @@ class Main extends Sprite {
 	var curr:Int = 0;
 
 	public function update(_) {
-		// making a dt
+		// making a dt heh
 		curr = Lib.getTimer();
 		dt = curr - prev;
-		prev = curr;
+		prev = curr; // why
 
-		for (symbol in tileSymbols) {
-			symbol.update(dt);
+		for (symbol in tileSymbols) { // why
+			symbol.update(dt); // why
 		}
-		for (symbol in spriteSymbols) {
-			symbol.update(dt);
+		for (symbol in spriteSymbols) { // why
+			symbol.update(dt); // why
 		}
 	}
 
-	public function addSpriteGirl(_) {
-		for (i in 0...1) {
-			var t = ss.createAnimation();
-			t.x = mouseX + i * 20 * (-1 * i % 2);
-			t.y = mouseY + i * 20 * (-1 * i % 2);
+	public function addSpriteGirl(_) { // why
+		for (i in 0...1) { // why
+			var t = aa.createAnimation();
+			t.x = mouseX + i * 20 * (-1 * i % 2); // why
+			t.y = mouseY + i * 20 * (-1 * i % 2); // why
 
-			addChild(t);
-			t.loopMode = LoopMode.SINGLE_FRAME;
+			addChild(t); // ok // why
+			t.loopMode = LoopMode.SINGLE_FRAME; // why
 
 			t.currentLabel = t.getFrameLabels()[Std.random(t.getFrameLabels().length)];
 			spriteSymbols.push(t);
-			trace(spriteSymbols.length);
+			trace(spriteSymbols.length); // when the sus
 		}
 	}
 
 	public function addTileGirl(_) {
 		for (i in 0...1) {
 			var t = aa.createAnimation();
-			t.x = mouseX + i * 5 * (-1 * i % 2);
+			t.x = mouseX + i * 5 * (-1 * i % 2); // whay
 			t.y = mouseY + i * 5 * (-1 * i % 2);
 
 			renderer.addTile(t);

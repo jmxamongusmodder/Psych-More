@@ -43,6 +43,7 @@ class ClientPrefs {
 		// oh yeah and you'd have to actually convert the difference to seconds which I already do, because this is based on beats and stuff. but it should work
 		// just fine. but I wont implement it because I don't know how you handle sustains and other stuff like that.
 		// oh yeah when you calculate the bps divide it by the songSpeed or rate because it wont scroll correctly when speeds exist.
+                // this one wont sound as smart but i forgor to put MIRROR mode in here lmao also heres some random code for no reason 	trace('cursing and violence settings will be added');
 		'songspeed' => 1.0,
 		'healthgain' => 1.0,
 		'healthloss' => 1.0,
@@ -65,7 +66,7 @@ class ClientPrefs {
 		'note_left'		=> [A, LEFT],
 		'note_down'		=> [S, DOWN],
 		'note_up'		=> [W, UP],
-		'note_right'	=> [D, RIGHT],
+		'note_right'	        => [D, RIGHT],
 		
 		'ui_left'		=> [A, LEFT],
 		'ui_down'		=> [S, DOWN],
@@ -88,7 +89,7 @@ class ClientPrefs {
 
 	public static function loadDefaultKeys() {
 		defaultKeys = keyBinds.copy();
-		//trace(defaultKeys);
+		trace('hola we loaded the DefaultKeys or somethin');
 	}
 
 	public static function saveSettings() {

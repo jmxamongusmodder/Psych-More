@@ -153,11 +153,15 @@ class ChartingState extends MusicBeatState
 	var zoomTxt:FlxText;
 	var curZoom:Int = 1;
 
-	#if !html5
+	#if !html5 //Normal or somethin'
 	var zoomList:Array<Float> = [
+                0.3,
 		0.5,
 		1,
+		1.5,
 		2,
+		2.5,
+                3,
 		4,
 		8,
 		12,
@@ -166,9 +170,13 @@ class ChartingState extends MusicBeatState
 	];
 	#else //The grid gets all black when over 1/12 snap
 	var zoomList:Array<Float> = [
+                0.3,
 		0.5,
 		1,
+		1.5,
 		2,
+		2.5,
+                3,
 		4,
 		8,
 		12
@@ -208,7 +216,7 @@ class ChartingState extends MusicBeatState
 				bpm: 150.0,
 				needsVoices: true,
 				arrowSkin: '',
-				splashSkin: 'noteSplashes',//idk it would crash if i didn't
+				splashSkin: 'noteSplashes', //idk it would crash if i didn't
 				player1: 'bf',
 				player2: 'dad',
 				player3: null,
@@ -224,8 +232,7 @@ class ChartingState extends MusicBeatState
 		// Paths.clearMemory();
 
 		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
+		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));  // Updating Discord Rich Presence
 		#end
 
 		vortex = FlxG.save.data.chart_vortex;
@@ -2008,7 +2015,7 @@ class ChartingState extends MusicBeatState
 		gridLayer.add(gridBlackLine);
 
 		for (i in 1...4){
-		var beatsep1:FlxSprite = new FlxSprite(gridBG.x,(GRID_SIZE * (4*curZoom))*i).makeGraphic(Std.int(gridBG.width), 1, 0x44FF0000);
+		var beatsep1:FlxSprite = new FlxSprite(gridBG.x,(GRID_SIZE * (4*zoomList[curZoom]))*i).makeGraphic(Std.int(gridBG.width), 1, 0x44FF0000);
 		if(vortex)gridLayer.add(beatsep1);
 		}
 

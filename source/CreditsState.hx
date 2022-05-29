@@ -10,9 +10,12 @@ import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.text.FlxText;
+import flixel.addons.transition.FlxTransitionableState;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.tweens.FlxEase;
+import flixel.input.keyboard.FlxKey;
 #if MODS_ALLOWED
 import sys.FileSystem;
 import sys.io.File;
@@ -34,20 +37,27 @@ class CreditsState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	var descBox:AttachedSprite;
+	var debugKeys:Array<FlxKey>;
 
-	var offsetThing:Float = -75;
+	var offsetThing:Float = -76;
 
 	override function create()
 	{
 		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("In the Menus", null);   // Updating Discord Rich Presence
 		#end
+		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		persistentUpdate = true;
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		add(bg);
 		bg.screenCenter();
+
+                if (FlxG.keys.anyJustPressed(debugKeys))
+		{
+		     // the function that used to be here didnt even work and gave so many errors so now im replacing it
+		     trace('i liek milk and cerieal');
+		}
 		
 		grpOptions = new FlxTypedGroup<Alphabet>();
 		add(grpOptions);

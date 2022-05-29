@@ -33,6 +33,7 @@ class AtlasFrameMaker extends FlxFramesCollection
 	*
 	* @param   key                 The file path.
 	* @param   _excludeArray       Use this to only create selected animations. Keep null to create all of them.
+        * uh also width may get supported if im not an idiot and understand Atlas Things
 	*
 	*/
 
@@ -46,7 +47,7 @@ class AtlasFrameMaker extends FlxFramesCollection
 
 		if (Paths.fileExists('images/$key/spritemap1.json', TEXT))
 		{
-			PlayState.instance.addTextToDebug("Only Spritemaps made with Adobe Animate 2018 are supported");
+			PlayState.instance.addTextToDebug("Only Spritemaps made with Adobe Animate 2018 are supported"); // 2020?
 			trace("Only Spritemaps made with Adobe Animate 2018 are supported");
 			return null;
 		}
@@ -60,7 +61,7 @@ class AtlasFrameMaker extends FlxFramesCollection
 		if(_excludeArray == null)
 		{
 			_excludeArray = t.getFrameLabels();
-			//trace('creating all anims');
+//			trace('creating all anims from the trace');
 		}
 		trace('Creating: ' + _excludeArray);
 
