@@ -3760,10 +3760,16 @@ class PlayState extends MusicBeatState
 		var score:Int = 350;
 
 		//tryna do MS based judgment due to popular demand
-		var daRating:String = Conductor.judgeNote(note, noteDiff);
+		var daRating:String = Conductor.judgeNote(note, noteDiff); // should it be some other way?
+                var daRate:String = "miss";
 
 		switch (daRating)
 		{
+			case "miss": // when you miss the sus
+				totalNotesHit += 0;
+				note.ratingMod = 2;
+                                var daRating = daRate;
+//				if(!note.ratingDisabled) shits++;
 			case "shit": // shit
 				totalNotesHit += 0;
 				note.ratingMod = 0;
@@ -4204,16 +4210,8 @@ class PlayState extends MusicBeatState
 			RecalculateRating();
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+                        
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
-
-			/*boyfriend.stunned = true;
-
-			// get stunned for 1/60 of a second, makes you able to
-			new FlxTimer().start(1 / 60, function(tmr:FlxTimer)
-			{
-				boyfriend.stunned = false;
-			});*/
 
 			if(boyfriend.hasMissAnimations) {
 				boyfriend.playAnim(singAnimations[Std.int(Math.abs(direction))] + 'miss', true);

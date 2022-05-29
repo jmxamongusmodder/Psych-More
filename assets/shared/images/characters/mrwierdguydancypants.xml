@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="mrwierdguydancypants.png">
+	<!-- Created with Adobe Animate version 22.0.4.185 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Symbol 261340000" x="0" y="0" width="307" height="382" frameX="-44" frameY="-18" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340001" x="307" y="0" width="307" height="386" frameX="-44" frameY="-14" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340002" x="614" y="0" width="308" height="390" frameX="-39" frameY="-10" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340003" x="922" y="0" width="310" height="393" frameX="-34" frameY="-7" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340004" x="1232" y="0" width="309" height="396" frameX="-31" frameY="-4" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340005" x="1541" y="0" width="310" height="399" frameX="-27" frameY="-1" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340006" x="0" y="399" width="311" height="400" frameX="-24" frameY="0" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340007" x="311" y="399" width="311" height="399" frameX="-22" frameY="-1" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340008" x="622" y="399" width="311" height="397" frameX="-20" frameY="-3" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340009" x="933" y="399" width="310" height="395" frameX="-17" frameY="-5" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340010" x="1243" y="399" width="310" height="393" frameX="-14" frameY="-7" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340011" x="1553" y="399" width="308" height="390" frameX="-10" frameY="-10" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340012" x="0" y="799" width="307" height="387" frameX="-5" frameY="-13" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340013" x="307" y="799" width="305" height="390" frameX="0" frameY="-10" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340014" x="612" y="799" width="307" height="393" frameX="-5" frameY="-7" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340015" x="919" y="799" width="308" height="395" frameX="-10" frameY="-5" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340016" x="1227" y="799" width="309" height="397" frameX="-14" frameY="-3" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340017" x="1536" y="799" width="310" height="399" frameX="-17" frameY="-1" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340018" x="0" y="1198" width="310" height="400" frameX="-20" frameY="0" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340019" x="310" y="1198" width="311" height="398" frameX="-22" frameY="-2" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340020" x="621" y="1198" width="310" height="395" frameX="-26" frameY="-5" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340021" x="931" y="1198" width="310" height="391" frameX="-29" frameY="-9" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340022" x="1241" y="1198" width="309" height="386" frameX="-34" frameY="-14" frameWidth="351" frameHeight="400"/>
+	<SubTexture name="Symbol 261340023" x="1550" y="1198" width="309" height="382" frameX="-38" frameY="-18" frameWidth="351" frameHeight="400"/>
+</TextureAtlas>
