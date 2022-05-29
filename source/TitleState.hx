@@ -69,7 +69,7 @@ class TitleState extends MusicBeatState
 
 	#if TITLE_SCREEN_EASTER_EGG
 	var easterEggKeys:Array<String> = [
-		'SHADOW', 'RIVER', 'SHUBS', 'BBPANZU'
+		'SHADOW', 'RIVER', 'SHUBS', 'BBPANZU', 'MACBETH'
 	];
 	var allowedKeys:String = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var easterEggKeysBuffer:String = '';
@@ -170,13 +170,16 @@ class TitleState extends MusicBeatState
 			case 'BBPANZU':
 				titleJSON.gfx += 45;
 				titleJSON.gfy += 100;
+			case 'MACBETH':
+				titleJSON.gfx += 45;
+				titleJSON.gfy += 100;
 		}
 		#end
 
 		if(!initialized && FlxG.save.data != null && FlxG.save.data.fullscreen)
 		{
 			FlxG.fullscreen = FlxG.save.data.fullscreen;
-			//trace('LOADED FULLSCREEN SETTING!!');
+			trace('LOADED FULLSCREEN SETTING!!');
 		}
 
 		if (FlxG.save.data.weekCompleted != null)
@@ -300,6 +303,10 @@ class TitleState extends MusicBeatState
 				gfDance.frames = Paths.getSparrowAtlas('BBBump');
 				gfDance.animation.addByIndices('danceLeft', 'BB Title Bump', [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27], "", 24, false);
 				gfDance.animation.addByIndices('danceRight', 'BB Title Bump', [27, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "", 24, false);
+			case 'MACBETH':
+				gfDance.frames = Paths.getSparrowAtlas('MacBump');
+				gfDance.animation.addByPrefix('danceLeft', 'Mac Title Bump', 24, false);
+				gfDance.animation.addByPrefix('danceRight', 'Mac Title Bump', 24, false);
 			#end
 
 			default:
@@ -661,6 +668,8 @@ class TitleState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('JingleShadow'));
 					case 'BBPANZU':
 						sound = FlxG.sound.play(Paths.sound('JingleBB'));
+					case 'MACBETH':
+						sound = FlxG.sound.play(Paths.sound('JingleMacbeth'));
 					
 					default: //Go back to normal ugly ass boring GF
 						remove(ngSpr);

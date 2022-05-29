@@ -71,17 +71,8 @@ class Achievements {
 			}
 		}
 
-		// You might be asking "Why didn't you just fucking load it directly dumbass??"
-		// Well, Mr. Smartass, consider that this class was made for Mind Games Mod's demo,
-		// i'm obviously going to change the "Psyche" achievement's objective so that you have to complete the entire week
-		// with no misses instead of just Psychic once the full release is out. So, for not having the rest of your achievements lost on
-		// the full release, we only save the achievements' tag names instead. This also makes me able to rename
-		// achievements later as long as the tag names aren't changed of course.
+		// This code is hard
 
-		// Edit: Oh yeah, just thought that this also makes me able to change the achievements orders easier later if i want to.
-		// So yeah, if you didn't thought about that i'm smarter than you, i think
-
-		// ha ha
 	}
 }
 
@@ -129,6 +120,7 @@ class AchievementObject extends FlxSpriteGroup {
 		var id:Int = Achievements.getAchievementIndex(name);
 //              var grahm = id;
 		var achievementBG:FlxSprite = new FlxSprite(60, 50).makeGraphic(420, 120, FlxColor.BLACK);
+ //             achievementBG.alpha = ClientPrefs.healthBarAlpha;
 		achievementBG.scrollFactor.set();
 
 		var achievementIcon:FlxSprite = new FlxSprite(achievementBG.x + 10, achievementBG.y + 10).loadGraphic(Paths.image('achievements/' + name)); // maybe instead of name use grahm?
@@ -155,6 +147,7 @@ class AchievementObject extends FlxSpriteGroup {
                 trace('Icon Alpha equals ' + achievementIcon.alpha);
                 trace('Name Alpha equals ' + achievementName.alpha);
                 trace('Text Alpha equals ' + achievementText.alpha);
+//              trace('Achivement BG Alpha equals' + achievementBG.alpha);
 
 		var cam:Array<FlxCamera> = FlxCamera.defaultCameras;
 		if(camera != null) {
@@ -163,7 +156,7 @@ class AchievementObject extends FlxSpriteGroup {
 		alpha = ClientPrefs.healthBarAlpha; // waht
 		achievementBG.cameras = cam;
 		achievementName.cameras = cam;
-		achievementText.cameras = cam;
+		achievementText.cameras = cam; // f this
 		achievementIcon.cameras = cam;
 		alphaTween = FlxTween.tween(this, {alpha: 1}, 0.5, {onComplete: function (twn:FlxTween) {
 			alphaTween = FlxTween.tween(this, {alpha: 0}, 0.5, {

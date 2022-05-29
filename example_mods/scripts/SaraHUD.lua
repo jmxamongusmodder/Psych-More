@@ -4,7 +4,7 @@
 -- You can write "true" or "false" in most of time
 
 --'modern'; 'classicTxt'; 'classicIcons'
-style = 'modern' --what style of HUD u wanna use
+style = 'classicIcons' --what style of HUD u wanna use
 
 
 songNameEnabled = true --wanna see song name?
@@ -205,6 +205,11 @@ function onCreatePost()
         setTextAlignment('song', 'center')
         setTextSize('song', 20)
 	    addLuaText('song')
+
+        makeLuaSprite('songIcon', 'saraHUD/songIcon', 190, 616)
+        setObjectCamera('songIcon', 'hud')
+        scaleObject('songIcon', 0.5, 0.5)
+        addLuaSprite('songIcon')
     end
 
     if songNameEnabled == true and style == 'modern' and (downscroll) then
@@ -223,6 +228,11 @@ function onCreatePost()
         setTextAlignment('song', 'center')
         setTextSize('song', 20)
 	    addLuaText('song')
+
+        makeLuaSprite('songIcon', 'saraHUD/songIcon', 190, 616)
+        setObjectCamera('songIcon', 'hud')
+        scaleObject('songIcon', 0.5, 0.5)
+        addLuaSprite('songIcon')
     end
     if songNameEnabled == true and style == 'classicTxt' and (downscroll) then
 	    makeLuaText('song', '' .. (songName), 500, 388, 96)
