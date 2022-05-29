@@ -1609,7 +1609,7 @@ class PlayState extends MusicBeatState
 		//inCutscene = true; //this would stop the camera movement, oops
 
 		var tankman:FlxSprite = new FlxSprite(-20, 320);
-		tankman.frames = Paths.getSparrowAtlas('cutscenes/' + songName);
+		tankman.frames = Paths.getSparrowAtlas('cutscenes/' + songName); // waht ima make it so that theres a var and it checks the song then chooses if it is cutscenes or othercuts
 		tankman.antialiasing = ClientPrefs.globalAntialiasing;
 		insert(members.indexOf(dadGroup) + 1, tankman);
 
@@ -1893,6 +1893,37 @@ class PlayState extends MusicBeatState
 					tankmanEnd();
 					boyfriend.animation.finishCallback = null;
 				});
+
+			case 'bopsus':
+				tankman.x += 40;
+				tankman.y += 10;
+
+				var tightBarslmao:FlxSound = new FlxSound().loadEmbedded(Paths.sound('edu'));
+				FlxG.sound.list.add(tightBarslmao);
+
+				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0, false);
+				FlxG.sound.music.fadeIn();
+
+				new FlxTimer().start(0.01, function(tmr:FlxTimer) //Fixes sync????
+				{
+					tightBarslmao.play(true);
+				});
+
+				tankman.animation.addByPrefix('wellwellwell', 'EduardoWell', 24, false);
+				tankman.animation.play('wellwellwell', true);
+				tankman.animation.play('wellwellwell', true);
+				tankman.animation.play('wellwellwell', true);
+				boyfriend.animation.curAnim.finish();
+
+				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 4, {ease: FlxEase.quadInOut});
+				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2 * 1.2}, 0.5, {ease: FlxEase.quadInOut, startDelay: 4});
+				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 1, {ease: FlxEase.quadInOut, startDelay: 4.5});
+
+				new FlxTimer().start(11.6, function(tmr:FlxTimer)
+				{
+					tankmanEnd();
+				});
+
 		}
 	}
 
@@ -2126,6 +2157,7 @@ class PlayState extends MusicBeatState
 	function startSong():Void
 	{
 		startingSong = false;
+                trace('Start Teh Song Or DIE');
 
 		previousFrameTime = FlxG.game.ticks;
 		lastReportedPlayheadPosition = 0;
