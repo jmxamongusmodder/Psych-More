@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="onetimerythmdoctor.png">
+	<!-- Created with Adobe Animate version 22.0.4.185 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="rhythm doctor doodle0000" x="0" y="0" width="283" height="337"/>
+	<SubTexture name="rhythm doctor doodle0001" x="283" y="0" width="283" height="331" frameX="0" frameY="-3" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0002" x="566" y="0" width="283" height="325" frameX="0" frameY="-6" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0003" x="0" y="337" width="283" height="319" frameX="0" frameY="-9" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0004" x="283" y="337" width="283" height="313" frameX="0" frameY="-12" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0005" x="566" y="337" width="283" height="306" frameX="0" frameY="-15" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0006" x="566" y="337" width="283" height="306" frameX="0" frameY="-15" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0007" x="0" y="656" width="283" height="312" frameX="0" frameY="-12" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0008" x="0" y="337" width="283" height="319" frameX="0" frameY="-9" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0009" x="283" y="656" width="283" height="325" frameX="0" frameY="-6" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0010" x="283" y="0" width="283" height="331" frameX="0" frameY="-3" frameWidth="283" frameHeight="337"/>
+	<SubTexture name="rhythm doctor doodle0011" x="0" y="0" width="283" height="337"/>
+</TextureAtlas>

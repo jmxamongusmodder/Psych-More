@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="tankman-spooky-dance.png">
+	<!-- Created with Adobe Animate version 22.0.4.185 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="dance0000" x="0" y="0" width="335" height="264" frameX="0" frameY="0" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0001" x="0" y="0" width="335" height="264" frameX="0" frameY="0" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0002" x="0" y="0" width="335" height="264" frameX="0" frameY="0" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0003" x="335" y="0" width="279" height="237" frameX="-74" frameY="-53" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0004" x="335" y="0" width="279" height="237" frameX="-74" frameY="-53" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0005" x="614" y="0" width="335" height="264" frameX="-102" frameY="0" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0006" x="614" y="0" width="335" height="264" frameX="-102" frameY="0" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0007" x="614" y="0" width="335" height="264" frameX="-102" frameY="0" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0008" x="335" y="0" width="279" height="237" frameX="-74" frameY="-53" frameWidth="437" frameHeight="290"/>
+	<SubTexture name="dance0009" x="335" y="0" width="279" height="237" frameX="-74" frameY="-53" frameWidth="437" frameHeight="290"/>
+</TextureAtlas>

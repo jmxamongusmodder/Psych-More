@@ -23,6 +23,7 @@ class Prompt extends MusicBeatSubstate
 	var panelbg:FlxSprite;
 	var buttonAccept:FlxButton;
 	var buttonNo:FlxButton;
+//	var bgfortehbuttons:FlxSprite;
 	var cornerSize:Int = 10;
 	public function new(promptText:String='', defaultSelected:Int = 0, okCallback:Void->Void, cancelCallback:Void->Void,acceptOnDefault:Bool=false,option1:String=null,option2:String=null) 
 	{
@@ -41,6 +42,7 @@ class Prompt extends MusicBeatSubstate
 		close();} );
 		buttonNo = new FlxButton(633.3,450,op2,function(){if(cancelc != null)cancelc();
 		close();});
+                trace('Selection Number Equals' + selected); // Ghost trace
 		super();	
 	}
 	
@@ -80,8 +82,8 @@ class Prompt extends MusicBeatSubstate
 		textshit.alignment = 'center';
 		add(textshit);
 		textshit.screenCenter();
-		buttonAccept.screenCenter();
-		buttonNo.screenCenter();
+		buttonAccept.screenCenter(); // X + panel.height-30
+		buttonNo.screenCenter(); // X - buttonNo.width/1.4
 		buttonAccept.x -= buttonNo.width/1.5;
 		buttonAccept.y = panel.y + panel.height-30;
 		buttonNo.x += buttonNo.width/1.5;
